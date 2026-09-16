@@ -116,7 +116,7 @@ def sync_weight(w, l, gsm, action_type):
 @st.cache_data(ttl=5)
 def fetch_all_data():
     try:
-        response = requests.get(f"{APPS_SCRIPT_URL}?action=read_all", timeout=20)
+        response = requests.get(f"{APPS_SCRIPT_URL}?action=read_all", timeout=30)
         data = response.json()
         master_df = pd.DataFrame(data.get("master", []))
         history_df = pd.DataFrame(data.get("history", []))
@@ -134,7 +134,7 @@ def fetch_all_data():
 
 def send_update_to_sheet(params):
     try:
-        res = requests.get(APPS_SCRIPT_URL, params=params, timeout=20)
+        res = requests.get(APPS_SCRIPT_URL, params=params, timeout=30)
         if res.json().get("status") == "success":
             st.toast("✅ Stock updated successfully!")
             st.cache_data.clear()
