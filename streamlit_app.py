@@ -43,6 +43,9 @@ else:
     st.sidebar.info("👁️ View-Only Mode Active")
     tab_history = st.tabs(["📜 Stock & History Log"])[0]
 
+st.markdown("---")
+st.subheader("📄 Paper Sheet Stock Manager")
+
 # --- Standalone Converter Tool ---
 with st.expander("📐 Quick CM to Inches Converter"):
     col_cm1, col_cm2 = st.columns(2)
@@ -165,8 +168,8 @@ def send_update_to_sheet(params):
 # Main Data Fetching
 sheet_df, history_df = fetch_all_data()
 
-st.markdown("---")
-st.subheader("📄 Paper Sheet Stock Manager")
+# st.markdown("---")
+# st.subheader("📄 Paper Sheet Stock Manager")
 
 if "form_key" not in st.session_state:
     st.session_state.form_key = 0
@@ -347,5 +350,5 @@ with tab_history:
     st.markdown("**📋 Current Master Stock**")
     st.dataframe(sheet_df, use_container_width=True, hide_index=True)
     st.markdown("---")
-    st.markdown("**📜 Transaction History**")
+    st.markdown("**📜 History Record**")
     st.dataframe(history_df, use_container_width=True, hide_index=True)
