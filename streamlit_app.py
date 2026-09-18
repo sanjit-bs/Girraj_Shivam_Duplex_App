@@ -59,7 +59,7 @@ with st.expander("📐 Quick CM to Inches Converter"):
             f"**Converted Dimensions:** {h_inch:.2f}″ (W) × {w_inch:.2f}″ (L)\n\n"
             f"*Original:* {h_cm:.2f} cm × {w_cm:.2f} cm"
         )
-
+st.markdown("---")
 
 # ------------------------------------------------------
 # 🔐 ACCESS CONTROL / SIDEBAR AUTHENTICATION
