@@ -36,6 +36,9 @@ admin_pin = st.sidebar.text_input("Enter Admin PIN to edit:", type="password")
 # Change "1234" to your preferred security PIN
 IS_ADMIN = (admin_pin == "1234")
 
+# st.markdown("---")
+# st.subheader("📄 Paper Sheet Stock Manager")
+
 if IS_ADMIN:
     st.sidebar.success("🔓 Admin Mode Active")
     tab_entry, tab_history = st.tabs(["⚡ Record Transaction", "📜 Stock & History Log"])
@@ -43,8 +46,8 @@ else:
     st.sidebar.info("👁️ View-Only Mode Active")
     tab_history = st.tabs(["📜 Stock & History Log"])[0]
 
-st.markdown("---")
-st.subheader("📄 Paper Sheet Stock Manager")
+# st.markdown("---")
+# st.subheader("📄 Paper Sheet Stock Manager")
 
 # --- Standalone Converter Tool ---
 with st.expander("📐 Quick CM to Inches Converter"):
