@@ -28,22 +28,7 @@ COLUMNS_HISTORY = [
 st.set_page_config(page_title="Paper Sheet Stock Manager", layout="wide")
 st.title("📜 Paper Sheet Stock Manager")
 
-# ------------------------------------------------------
-# 🔐 ACCESS CONTROL / SIDEBAR AUTHENTICATION
-# ------------------------------------------------------
-st.sidebar.title("🔐 Access Control")
-admin_pin = st.sidebar.text_input("Enter Admin PIN to edit:", type="password")
-
-# Change "1234" to your preferred security PIN
-IS_ADMIN = (admin_pin == "1234")
-
-if IS_ADMIN:
-    st.sidebar.success("🔓 Admin Mode Active")
-    tab_entry, tab_history = st.tabs(["⚡ Record Transaction", "📜 Stock & History Log"])
-else:
-    st.sidebar.info("👁️ View-Only Mode Active")
-    tab_history = st.tabs(["📜 Stock & History Log"])[0]
-    
+st.markdown("---")
 # --- Standalone Converter Tool ---
 with st.expander("📐 Quick CM to Inches Converter"):
     col_cm1, col_cm2 = st.columns(2)
@@ -74,6 +59,23 @@ with st.expander("📐 Quick CM to Inches Converter"):
             f"**Converted Dimensions:** {h_inch:.2f}″ (W) × {w_inch:.2f}″ (L)\n\n"
             f"*Original:* {h_cm:.2f} cm × {w_cm:.2f} cm"
         )
+
+
+# ------------------------------------------------------
+# 🔐 ACCESS CONTROL / SIDEBAR AUTHENTICATION
+# ------------------------------------------------------
+st.sidebar.title("🔐 Access Control")
+admin_pin = st.sidebar.text_input("Enter Admin PIN to edit:", type="password")
+
+# Change "1234" to your preferred security PIN
+IS_ADMIN = (admin_pin == "1234")
+
+if IS_ADMIN:
+    st.sidebar.success("🔓 Admin Mode Active")
+    tab_entry, tab_history = st.tabs(["⚡ Record Transaction", "📜 Stock & History Log"])
+else:
+    st.sidebar.info("👁️ View-Only Mode Active")
+    tab_history = st.tabs(["📜 Stock & History Log"])[0]
 
 def clean_date_column(df, col_name="Date"):
     if df.empty or col_name not in df.columns:
